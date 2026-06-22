@@ -5,12 +5,13 @@ import { ok, bad, forbidden, notFound, optInt } from "@/lib/http";
 export const dynamic = "force-dynamic";
 
 // POST { userId } — assign a staff member to the loan.
-export async function POST(req: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = await params;
+  const id = Number(rawId);
   const loan = getLoan(id);
   if (!loan) return notFound();
 
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   if (!can(user, "member:assign", { loan, isMember: isMember(id, user.id) })) {
     return forbidden();
   }

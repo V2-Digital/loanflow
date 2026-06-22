@@ -4,24 +4,26 @@ import { MarkdownDocument, slugify } from "@/components/MarkdownDocument";
 import { ARTIFACTS, getArtifact } from "../artifacts";
 
 type Params = {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 };
 
 export function generateStaticParams() {
   return ARTIFACTS.map((artifact) => ({ slug: artifact.slug }));
 }
 
-export function generateMetadata({ params }: Params) {
-  const artifact = getArtifact(params.slug);
+export async function generateMetadata({ params }: Params) {
+  const { slug } = await params;
+  const artifact = getArtifact(slug);
   return {
     title: artifact ? `${artifact.title} - AI-DLC Artifacts` : "AI-DLC Artifact",
   };
 }
 
-export default function ArtifactDetailPage({ params }: Params) {
-  const artifact = getArtifact(params.slug);
+export default async function ArtifactDetailPage({ params }: Params) {
+  const { slug } = await params;
+  const artifact = getArtifact(slug);
   if (!artifact) notFound();
 
   return (

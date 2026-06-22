@@ -24,8 +24,8 @@ export function Header({ users, current }: { users: User[]; current: User }) {
 
   return (
     <header className="border-b border-slate-200 bg-white">
-      <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-4 py-3">
-        <div className="flex items-center gap-4">
+      <div className="mx-auto flex max-w-6xl flex-col gap-3 px-4 py-3 md:flex-row md:items-center md:justify-between">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-4">
           <Link href="/" className="flex items-center gap-2">
             <span className="grid h-8 w-8 place-items-center rounded-lg bg-brand-600 font-bold text-white">
               LF
@@ -35,7 +35,7 @@ export function Header({ users, current }: { users: User[]; current: User }) {
               · Business Loan Coordination
             </span>
           </Link>
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="flex flex-wrap items-center gap-1">
             <Link href="/" className="btn-ghost py-1.5">
               Pipeline
             </Link>

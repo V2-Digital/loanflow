@@ -6,13 +6,14 @@ import { ok, bad, forbidden, notFound, oneOf, optInt } from "@/lib/http";
 export const dynamic = "force-dynamic";
 
 // PATCH { status?, assigneeId? } — progress or reassign a task.
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  const taskId = Number(params.id);
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = await params;
+  const taskId = Number(rawId);
   const task = getTask(taskId);
   if (!task) return notFound();
   const loan = getLoan(task.loanId)!;
 
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   const member = isMember(loan.id, user.id);
   const isAssignee = task.assigneeId === user.id;
   const isOwnerBorrower = loan.borrowerId === user.id;

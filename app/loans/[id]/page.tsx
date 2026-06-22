@@ -7,12 +7,13 @@ import { LoanWorkspace } from "@/components/LoanWorkspace";
 
 export const dynamic = "force-dynamic";
 
-export default function LoanPage({ params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export default async function LoanPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = await params;
+  const id = Number(rawId);
   const detail = getLoanDetail(id);
   if (!detail) notFound();
 
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   const member = isMember(id, user.id);
   if (!can(user, "loan:view", { loan: detail, isMember: member })) {
     return (

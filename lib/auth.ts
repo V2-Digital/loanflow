@@ -12,8 +12,9 @@ export const SESSION_COOKIE = "lf_uid";
 // build would replace this with a proper auth provider; the policy layer in
 // lib/policy.ts is written so it can be reused unchanged.
 
-export function getCurrentUser(): User {
-  const raw = cookies().get(SESSION_COOKIE)?.value;
+export async function getCurrentUser(): Promise<User> {
+  const cookieStore = await cookies();
+  const raw = cookieStore.get(SESSION_COOKIE)?.value;
   const id = raw ? Number(raw) : NaN;
   if (Number.isFinite(id)) {
     const u = db.prepare("SELECT * FROM users WHERE id = ?").get(id) as User | undefined;

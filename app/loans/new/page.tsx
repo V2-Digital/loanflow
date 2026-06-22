@@ -6,8 +6,8 @@ import { NewLoanForm } from "@/components/NewLoanForm";
 
 export const dynamic = "force-dynamic";
 
-export default function NewLoanPage() {
-  const user = getCurrentUser();
+export default async function NewLoanPage() {
+  const user = await getCurrentUser();
   if (!can(user, "loan:create")) redirect("/");
   const borrowers = listUsers().filter((u) => u.role === "borrower");
 

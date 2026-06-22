@@ -6,7 +6,7 @@ export const dynamic = "force-dynamic";
 
 // Current session user.
 export async function GET() {
-  return ok(getCurrentUser());
+  return ok(await getCurrentUser());
 }
 
 // Switch the active (mock) user. Body: { userId: number }

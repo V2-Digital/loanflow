@@ -7,8 +7,8 @@ import { StageBadge, StageBar } from "@/components/StageBar";
 
 export const dynamic = "force-dynamic";
 
-export default function DashboardPage() {
-  const user = getCurrentUser();
+export default async function DashboardPage() {
+  const user = await getCurrentUser();
   const loans = listLoansForUser(user);
   const myTasks = listMyOpenTasks(user.id);
   const canCreate = can(user, "loan:create");

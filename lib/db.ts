@@ -12,7 +12,8 @@ declare global {
 function open(): Database.Database {
   const dir = path.join(process.cwd(), "data");
   fs.mkdirSync(dir, { recursive: true });
-  const db = new Database(path.join(dir, "loanflow.db"));
+  const dbPath = process.env.LOANFLOW_DB_PATH ?? path.join(dir, "loanflow.db");
+  const db = new Database(dbPath);
   db.pragma("foreign_keys = ON");
   db.exec(SCHEMA_SQL);
   return db;

@@ -5,14 +5,14 @@ import { ok, bad, forbidden, requireString, optInt, ValidationError } from "@/li
 export const dynamic = "force-dynamic";
 
 export async function GET() {
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   return ok(listLoansForUser(user));
 }
 
 // Create a loan. Borrowers create their own; staff (officer/manager) can create
 // on behalf of a borrower by passing borrowerId.
 export async function POST(req: Request) {
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   if (!can(user, "loan:create")) return forbidden();
 
   try {

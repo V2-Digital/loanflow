@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   description: "AI-DLC reference implementation for a bank loan coordination workspace",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const current = getCurrentUser();
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const current = await getCurrentUser();
   const users = listUsers();
   return (
     <html lang="en">

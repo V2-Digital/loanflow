@@ -7,8 +7,9 @@ import { ok, bad, forbidden, notFound, oneOf } from "@/lib/http";
 export const dynamic = "force-dynamic";
 
 // PATCH { status, note? } — upload / approve / reject a document.
-export async function PATCH(req: Request, { params }: { params: { id: string } }) {
-  const docId = Number(params.id);
+export async function PATCH(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = await params;
+  const docId = Number(rawId);
   const doc = db.prepare("SELECT * FROM documents WHERE id = ?").get(docId) as
     | Document
     | undefined;
@@ -19,7 +20,7 @@ export async function PATCH(req: Request, { params }: { params: { id: string } }
   const status = oneOf(b.status, DOC_STATUSES);
   if (!status) return bad("status must be one of " + DOC_STATUSES.join(", "));
 
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   const member = isMember(loan.id, user.id);
   const action = status === "uploaded" ? "document:upload" : "document:review";
   if (!can(user, action, { loan, isMember: member })) return forbidden();

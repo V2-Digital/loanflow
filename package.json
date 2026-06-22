@@ -9,12 +9,13 @@
     "start": "next start",
     "lint": "next lint",
     "seed": "tsx scripts/seed.ts",
-    "smoke": "tsx scripts/smoke.ts",
+    "smoke": "LOANFLOW_DB_PATH=data/loanflow-smoke.db tsx scripts/smoke.ts",
+    "story:check": "tsx scripts/user-story-checks.ts",
     "db:reset": "node -e \"require('fs').rmSync('data/loanflow.db',{force:true})\" && npm run seed"
   },
   "dependencies": {
-    "better-sqlite3": "^11.8.1",
-    "next": "^14.2.33",
+    "better-sqlite3": "^12.11.1",
+    "next": "^16.2.9",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },

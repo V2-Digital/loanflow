@@ -6,12 +6,13 @@ import { ok, bad, forbidden, notFound, oneOf } from "@/lib/http";
 export const dynamic = "force-dynamic";
 
 // POST { toStage, note?, decision?, decisionNote? }
-export async function POST(req: Request, { params }: { params: { id: string } }) {
-  const id = Number(params.id);
+export async function POST(req: Request, { params }: { params: Promise<{ id: string }> }) {
+  const { id: rawId } = await params;
+  const id = Number(rawId);
   const loan = getLoan(id);
   if (!loan) return notFound();
 
-  const user = getCurrentUser();
+  const user = await getCurrentUser();
   if (!can(user, "stage:change", { loan, isMember: isMember(id, user.id) })) {
     return forbidden();
   }
