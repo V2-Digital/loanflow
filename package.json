@@ -1,0 +1,32 @@
+{
+  "name": "loanflow",
+  "version": "0.1.0",
+  "private": true,
+  "description": "AI-DLC reference: a Next.js app for bank teams coordinating a business loan",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "seed": "tsx scripts/seed.ts",
+    "smoke": "tsx scripts/smoke.ts",
+    "db:reset": "node -e \"require('fs').rmSync('data/loanflow.db',{force:true})\" && npm run seed"
+  },
+  "dependencies": {
+    "better-sqlite3": "^11.8.1",
+    "next": "^14.2.33",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@types/better-sqlite3": "^7.6.12",
+    "@types/node": "^20.14.0",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.10",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}
