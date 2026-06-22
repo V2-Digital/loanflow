@@ -42,6 +42,9 @@ export function Header({ users, current }: { users: User[]; current: User }) {
             <Link href="/aidlc" className="btn-ghost py-1.5">
               AI-DLC artifacts
             </Link>
+            <Link href="/feature-tracker" className="btn-ghost py-1.5">
+              Feature tracker
+            </Link>
             <Link href="/readme" className="btn-ghost py-1.5">
               README
             </Link>

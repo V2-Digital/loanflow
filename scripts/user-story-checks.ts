@@ -78,6 +78,7 @@ async function main() {
     home.res.status === 200 &&
       home.body.includes('href="/"') &&
       home.body.includes('href="/aidlc"') &&
+      home.body.includes('href="/feature-tracker"') &&
       home.body.includes('href="/readme"'),
     `GET / status ${home.res.status}; nav links present=${home.body.includes('href="/readme"')}`,
   );
@@ -505,6 +506,16 @@ async function main() {
       readme.body.includes("Demo guide") &&
       readme.body.includes("What Has Not Been Built With AI-DLC"),
     `GET /readme status ${readme.res.status}`,
+  );
+  const featureTracker = await text(officer, "/feature-tracker");
+  record(
+    "LF-050",
+    "Feature tracker nav and table page",
+    featureTracker.res.status === 200 &&
+      featureTracker.body.includes("Feature tracker") &&
+      featureTracker.body.includes("LF-001") &&
+      featureTracker.body.includes("Tracked stories"),
+    `GET /feature-tracker status ${featureTracker.res.status}`,
   );
   const notFound = await text(officer, "/definitely-not-a-real-page");
   record(
