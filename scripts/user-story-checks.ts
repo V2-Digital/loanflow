@@ -498,6 +498,58 @@ async function main() {
     artifact.res.status === 200 && artifact.body.includes("AI-DLC State") && missingArtifact.res.status === 404,
     `state status ${artifact.res.status}; missing status ${missingArtifact.res.status}`,
   );
+  const lifecycleDiagram = await text(officer, "/aidlc/ai-dlc-lifecycle");
+  record(
+    "LF-052",
+    "AI-DLC lifecycle HTML artifact slug",
+    lifecycleDiagram.res.status === 200 &&
+      lifecycleDiagram.body.includes("AI-DLC Lifecycle Diagram") &&
+      lifecycleDiagram.body.includes("Agentic Level") &&
+      lifecycleDiagram.body.includes("<iframe") &&
+      lifecycleDiagram.body.includes("fixed inset-0 z-50 h-screen w-screen"),
+    `GET /aidlc/ai-dlc-lifecycle status ${lifecycleDiagram.res.status}`,
+  );
+  const visualArtifactSlugs = [
+    "loanflow-diagram",
+    "loanflow-dev-process",
+    "org-scaling",
+    "persona-absorption",
+    "persona-absorption-screenshot-01",
+    "persona-absorption-screenshot-02",
+    "loanflow-repository-diagram-readme",
+    "loanflow-repository-diagram-runtime",
+  ];
+  const visualArtifactResponses = await Promise.all(
+    visualArtifactSlugs.map(async (slug) => {
+      const response = await text(officer, `/aidlc/${slug}`);
+      return { slug, response };
+    }),
+  );
+  const visualArtifactFailures = visualArtifactResponses
+    .filter(({ response }) => response.res.status !== 200)
+    .map(({ slug, response }) => `${slug}:${response.res.status}`);
+  record(
+    "LF-053",
+    "LoanFlow repository diagram artifact bundle",
+    visualArtifactFailures.length === 0 &&
+      visualArtifactResponses.some(({ response }) => response.body.includes("fixed inset-0 z-50")) &&
+      visualArtifactResponses.some(({ response }) => response.body.includes("max-h-full max-w-full")) &&
+      visualArtifactResponses.some(({ response }) => response.body.includes("Claude Design")) &&
+      visualArtifactResponses.some(({ response }) => response.body.includes("dc-runtime")),
+    visualArtifactFailures.length === 0
+      ? `${visualArtifactSlugs.length} visual artifact slugs returned 200`
+      : `Failures: ${visualArtifactFailures.join(", ")}`,
+  );
+  const traceabilityLoop = await text(officer, "/aidlc/feature-traceability-loop");
+  record(
+    "LF-051",
+    "AI-DLC feature traceability loop",
+    traceabilityLoop.res.status === 200 &&
+      traceabilityLoop.body.includes("Reverse Engineering Feature Traceability Loop") &&
+      traceabilityLoop.body.includes("feature-status-tracker.csv") &&
+      traceabilityLoop.body.includes("test every user behaviour again post fix"),
+    `GET /aidlc/feature-traceability-loop status ${traceabilityLoop.res.status}`,
+  );
   const readme = await text(officer, "/readme");
   record(
     "LF-042",

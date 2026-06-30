@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+  @keyframes lf-fade { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+</style>
+</helmet>
+<div style="width: 1280px; background: #fbfbfa; color: #1c1c1a; font-family: 'Inter', -apple-system, sans-serif; padding: 56px 64px 64px; box-sizing: border-box;">
+
+  <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px;">
+    <h1 style="font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0;">LoanFlow</h1>
+    <span style="font-size: 13px; font-family: 'JetBrains Mono', monospace; color: #8a8a82;">loan lifecycle</span>
+  </div>
+  <p style="font-size: 14px; color: #6b6b63; margin: 0 0 44px; max-width: 640px; line-height: 1.5;">A business loan moves through ordered stages from intake to decision. Adjacent-only transitions are enforced and logged. Each stage is owned by a role.</p>
+
+  <!-- Pipeline -->
+  <div style="display: flex; align-items: stretch; gap: 0; margin-bottom: 8px;">
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">01</div>
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Draft</div>
+      <div style="display: inline-block; font-size: 11px; color: #6b6b63; background: #f3f2ee; border-radius: 5px; padding: 3px 8px;">Loan Officer</div>
+    </div>
+
+    <div style="flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">02</div>
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Submitted</div>
+      <div style="display: inline-block; font-size: 11px; color: #6b6b63; background: #f3f2ee; border-radius: 5px; padding: 3px 8px;">Loan Officer</div>
+    </div>
+
+    <div style="flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">03</div>
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Document Collection</div>
+      <div style="display: inline-block; font-size: 11px; color: #6b6b63; background: #f3f2ee; border-radius: 5px; padding: 3px 8px;">Borrower · Officer</div>
+    </div>
+
+    <div style="flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">04</div>
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Credit Review</div>
+      <div style="display: inline-block; font-size: 11px; color: #6b6b63; background: #f3f2ee; border-radius: 5px; padding: 3px 8px;">Credit Analyst</div>
+    </div>
+
+    <div style="flex: 0 0 28px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03);">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">05</div>
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 8px;">Underwriting</div>
+      <div style="display: inline-block; font-size: 11px; color: #6b6b63; background: #f3f2ee; border-radius: 5px; padding: 3px 8px;">Underwriter</div>
+    </div>
+
+  </div>
+
+  <!-- elbow connector from Underwriting down to Decision -->
+  <div style="display: flex; justify-content: flex-end; padding-right: 9%; margin-top: 4px;">
+    <div style="color: #c4c3bb; font-size: 18px; line-height: 1;">↓</div>
+  </div>
+
+  <!-- Decision section -->
+  <div style="margin-top: 38px; display: flex; align-items: center; gap: 36px;">
+
+    <div style="flex: 0 0 220px; background: #1c1c1a; color: #fbfbfa; border-radius: 10px; padding: 18px 16px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #d9b48f; margin-bottom: 7px;">06</div>
+      <div style="font-size: 17px; font-weight: 600; margin-bottom: 8px;">Decision</div>
+      <div style="display: inline-block; font-size: 11px; color: #cfcfc7; background: rgba(255,255,255,0.1); border-radius: 5px; padding: 3px 8px;">Manager</div>
+    </div>
+
+    <div style="font-size: 22px; color: #c4c3bb;">→</div>
+
+    <div style="flex: 1; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+      <div style="background: #fff; border: 1px solid #cfe4d4; border-left: 3px solid #4f9b6e; border-radius: 8px; padding: 13px 14px;">
+        <div style="font-size: 14px; font-weight: 600; color: #2f7a4f;">Approved</div>
+        <div style="font-size: 12px; color: #6b6b63; margin-top: 3px;">with rationale</div>
+      </div>
+      <div style="background: #fff; border: 1px solid #ecd2cf; border-left: 3px solid #c06b5e; border-radius: 8px; padding: 13px 14px;">
+        <div style="font-size: 14px; font-weight: 600; color: #a14e42;">Declined</div>
+        <div style="font-size: 12px; color: #6b6b63; margin-top: 3px;">with rationale</div>
+      </div>
+      <div style="background: #fff; border: 1px solid #e4e3dd; border-left: 3px solid #a8a79e; border-radius: 8px; padding: 13px 14px;">
+        <div style="font-size: 14px; font-weight: 600; color: #6b6b63;">Withdrawn</div>
+        <div style="font-size: 12px; color: #6b6b63; margin-top: 3px;">with rationale</div>
+      </div>
+    </div>
+
+    <div style="font-size: 22px; color: #c4c3bb;">→</div>
+
+    <div style="flex: 0 0 150px; background: #f3f2ee; border: 1px dashed #c4c3bb; border-radius: 10px; padding: 18px 16px; text-align: center;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">07</div>
+      <div style="font-size: 16px; font-weight: 600;">Closed</div>
+    </div>
+
+  </div>
+
+  <!-- Footnote -->
+  <div style="margin-top: 44px; padding-top: 20px; border-top: 1px solid #ececE6; display: flex; gap: 40px; flex-wrap: wrap;">
+    <div style="font-size: 12px; color: #8a8a82; line-height: 1.6;"><span style="color: #1c1c1a; font-weight: 600;">Throughout</span> &nbsp;Documents requested &amp; reviewed · Tasks assigned · Team membership · Comments &amp; activity feed</div>
+    <div style="font-size: 12px; color: #8a8a82; line-height: 1.6;"><span style="color: #1c1c1a; font-weight: 600;">Rule</span> &nbsp;Adjacent-only stage transitions, every move logged</div>
+  </div>
+
+</div>
+</x-dc>
+</body>
+</html>

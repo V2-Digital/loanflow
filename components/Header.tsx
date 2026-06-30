@@ -37,7 +37,7 @@ export function Header({ users, current }: { users: User[]; current: User }) {
           </Link>
           <nav className="flex flex-wrap items-center gap-1">
             <Link href="/" className="btn-ghost py-1.5">
-              Pipeline
+              LoanFlow App
             </Link>
             <Link href="/aidlc" className="btn-ghost py-1.5">
               AI-DLC artifacts

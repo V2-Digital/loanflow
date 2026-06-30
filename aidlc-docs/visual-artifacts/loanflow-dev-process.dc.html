@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+</style>
+</helmet>
+<template id="__bundler_thumbnail">
+  <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <rect width="100" height="100" fill="#1c1c1a"/>
+    <g transform="translate(30,30)">
+      <rect x="0" y="0" width="40" height="11" rx="2" fill="#4f9b6e"/>
+      <rect x="0" y="15" width="40" height="11" rx="2" fill="#c79a5b"/>
+      <rect x="0" y="30" width="40" height="11" rx="2" fill="#6b6cb1"/>
+    </g>
+  </svg>
+</template>
+<div style="width: 1700px; background: #fbfbfa; color: #1c1c1a; font-family: 'Inter', -apple-system, sans-serif; padding: 56px 64px 64px; box-sizing: border-box;">
+
+  <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px;">
+    <h1 style="font-size: 30px; font-weight: 700; letter-spacing: -0.02em; margin: 0;">AI-DLC Lifecycle</h1>
+  </div>
+  <p style="font-size: 14px; color: #6b6b63; margin: 0 0 26px; max-width: 700px; line-height: 1.5;">The AI-Driven Development Life Cycle turned a product idea into requirements, design, units of work, and verified code. Each step is tagged with its level of AI autonomy, and the persona who leads it — defined by the skills and activity that level demands.</p>
+
+  <div style="display: flex; gap: 44px; align-items: flex-start;">
+  <div style="flex: 1; min-width: 0;">
+
+  <!-- Legend -->
+  <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b08968; letter-spacing: 0.04em; margin-bottom: 14px;">Agentic Level</div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 40px;">
+
+    <div style="background: #fff; border: 1px solid #e4e3dd; border-top: 3px solid #4f9b6e; border-radius: 10px; padding: 15px 16px;">
+      <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 8px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #4f9b6e;"></span>
+        <span style="font-size: 13px; font-weight: 600;">L1 · AI-Assisted</span>
+      </div>
+      <div style="font-size: 12px; color: #8a8a82; line-height: 1.4; margin-bottom: 10px;">Human-in-the-loop — human authors, AI suggests</div>
+      <div style="padding-top: 9px; border-top: 1px solid #f0efe9;">
+        <div style="display: flex; align-items: baseline; gap: 7px; margin-bottom: 3px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+          <span style="font-size: 13px; font-weight: 600;">Engineer</span>
+        </div>
+        <div style="font-size: 11px; color: #8a8a82;">Skills: coding · testing · debugging</div>
+      </div>
+    </div>
+
+    <div style="background: #fff; border: 1px solid #e4e3dd; border-top: 3px solid #c79a5b; border-radius: 10px; padding: 15px 16px;">
+      <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 8px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #c79a5b;"></span>
+        <span style="font-size: 13px; font-weight: 600;">L2 · AI-Augmented</span>
+      </div>
+      <div style="font-size: 12px; color: #8a8a82; line-height: 1.4; margin-bottom: 10px;">Human-in-the-loop — AI drafts, human directs</div>
+      <div style="padding-top: 9px; border-top: 1px solid #f0efe9;">
+        <div style="display: flex; align-items: baseline; gap: 7px; margin-bottom: 3px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+          <span style="font-size: 13px; font-weight: 600;">Solution Designer</span>
+        </div>
+        <div style="font-size: 11px; color: #8a8a82;">Skills: requirements · domain modeling · architecture</div>
+      </div>
+    </div>
+
+    <div style="background: #fff; border: 1px solid #e4e3dd; border-top: 3px solid #6b6cb1; border-radius: 10px; padding: 15px 16px;">
+      <div style="display: flex; align-items: center; gap: 9px; margin-bottom: 8px;">
+        <span style="width: 9px; height: 9px; border-radius: 50%; background: #6b6cb1;"></span>
+        <span style="font-size: 13px; font-weight: 600;">L3 · Agentic</span>
+      </div>
+      <div style="font-size: 12px; color: #8a8a82; line-height: 1.4; margin-bottom: 10px;">Human-on-the-loop — AI executes, human reviews</div>
+      <div style="padding-top: 9px; border-top: 1px solid #f0efe9;">
+        <div style="display: flex; align-items: baseline; gap: 7px; margin-bottom: 3px;">
+          <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+          <span style="font-size: 13px; font-weight: 600;">Agent Orchestrator</span>
+        </div>
+        <div style="font-size: 11px; color: #8a8a82;">Skills: prompting · oversight · code review</div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Business participation -->
+  <div style="margin: 0 0 36px;">
+    <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b08968; letter-spacing: 0.04em; margin-bottom: 14px;">BUSINESS PARTICIPATION</div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;">
+
+      <div style="background: #fff; border: 1px solid #e4e3dd; border-left: 3px solid #b08968; border-radius: 10px; padding: 15px 16px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 5px;">Product Owner / Sponsor</div>
+        <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; margin-bottom: 10px;">Frames the problem, sets scope, value, and priorities</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8a8a82; margin-bottom: 10px;">Engages: Requirements · Units of Work</div>
+        <div style="display: flex; align-items: center; gap: 6px; padding-top: 9px; border-top: 1px solid #f0efe9;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c79a5b;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L2 · Augmented — AI drafts, business directs</span></div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e4e3dd; border-left: 3px solid #b08968; border-radius: 10px; padding: 15px 16px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 5px;">Domain Expert (SME)</div>
+        <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; margin-bottom: 10px;">Validates the real business process and rules behind the design</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8a8a82; margin-bottom: 10px;">Engages: Workflow Planning · App Design</div>
+        <div style="display: flex; align-items: center; gap: 6px; padding-top: 9px; border-top: 1px solid #f0efe9;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted — human judgment, AI suggests</span></div>
+      </div>
+
+      <div style="background: #fff; border: 1px solid #e4e3dd; border-left: 3px solid #b08968; border-radius: 10px; padding: 15px 16px;">
+        <div style="font-size: 13px; font-weight: 600; margin-bottom: 5px;">Approver / Reviewer</div>
+        <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; margin-bottom: 10px;">Accepts outcomes at the gates and feeds results back in</div>
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #8a8a82; margin-bottom: 10px;">Engages: Build &amp; Test · Operations</div>
+        <div style="display: flex; align-items: center; gap: 6px; padding-top: 9px; border-top: 1px solid #f0efe9;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted — human decides, AI surfaces evidence</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Pre-step: Reverse Engineering -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 14px;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b08968; letter-spacing: 0.04em;">ENTRY · REVERSE ENGINEERING</span>
+    <span style="display: inline-flex; align-items: baseline; gap: 8px; background: #fff; border: 1px solid #e4e3dd; border-radius: 999px; padding: 5px 13px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+      <span style="font-size: 12px; font-weight: 600;">Reverse Engineer</span>
+      <span style="font-size: 11px; color: #8a8a82;">code analysis · mapping · documentation</span>
+    </span>
+  </div>
+  <div style="background: #fff; border: 1px dashed #c4c3bb; border-radius: 10px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-bottom: 8px;">
+    <div>
+      <div style="font-size: 15px; font-weight: 600; margin-bottom: 4px;">Reverse Engineering</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45;">Maps an existing codebase into requirements &amp; design. <span style="color: #a14e42;">Skipped here</span> — this was a greenfield build.</div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 7px; flex: 0 0 auto;">
+      <span style="width: 9px; height: 9px; border-radius: 50%; background: #6b6cb1;"></span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L3 · Agentic</span>
+    </div>
+  </div>
+
+  <div style="display: flex; justify-content: center; margin: 6px 0;">
+    <div style="color: #c4c3bb; font-size: 18px; line-height: 1;">↓</div>
+  </div>
+
+  <!-- Phase 1: Inception -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 18px 0 14px;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b08968; letter-spacing: 0.04em;">PHASE 1 · INCEPTION</span>
+    <span style="display: inline-flex; align-items: baseline; gap: 8px; background: #fff; border: 1px solid #e4e3dd; border-radius: 999px; padding: 5px 13px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+      <span style="font-size: 12px; font-weight: 600;">Solution Designer</span>
+      <span style="font-size: 11px; color: #8a8a82;">discovery · modeling · design</span>
+    </span>
+  </div>
+  <div style="display: flex; align-items: stretch; gap: 0; margin-bottom: 8px;">
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">01</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Workspace Detection</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Identified a greenfield project</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #6b6cb1;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L3 · Agentic</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">02</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Requirements Analysis</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Personas, reqs, acceptance criteria, scope</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c79a5b;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L2 · Augmented</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">03</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Workflow Planning</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Turned product intent into an app flow</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c79a5b;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L2 · Augmented</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">04</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Application Design</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Architecture, domain model, stage machine, auth matrix</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c79a5b;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L2 · Augmented</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">05</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Units of Work</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Split build into reviewable slices</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #6b6cb1;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L3 · Agentic</span></div>
+    </div>
+
+  </div>
+
+  <div style="display: flex; justify-content: center; margin: 6px 0;">
+    <div style="color: #c4c3bb; font-size: 18px; line-height: 1;">↓</div>
+  </div>
+
+  <!-- Phase 2: Construction -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 18px 0 14px;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b08968; letter-spacing: 0.04em;">PHASE 2 · CONSTRUCTION</span>
+    <span style="display: inline-flex; align-items: baseline; gap: 8px; background: #fff; border: 1px solid #e4e3dd; border-radius: 999px; padding: 5px 13px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+      <span style="font-size: 12px; font-weight: 600;">Engineer</span>
+      <span style="font-size: 11px; color: #8a8a82;">build · integrate · test</span>
+    </span>
+  </div>
+  <div style="display: flex; align-items: stretch; gap: 0; margin-bottom: 8px;">
+
+    <div style="flex: 1; background: #1c1c1a; color: #fbfbfa; border-radius: 10px; padding: 18px 16px; display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #d9b48f; margin-bottom: 7px;">06</div>
+      <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">Construction</div>
+      <div style="font-size: 12px; color: #cfcfc7; line-height: 1.45; flex: 1;">Implemented against the units — U1 Auth, U2 Pipeline, U3 Docs &amp; Tasks, U4 Collaboration</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #8d8eca;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #cfcfc7;">L3 · Agentic</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 18px 16px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">07</div>
+      <div style="font-size: 16px; font-weight: 600; margin-bottom: 6px;">Build &amp; Test</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Documented run steps and smoke checks that verify the app</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted</span></div>
+    </div>
+
+  </div>
+
+  <div style="display: flex; justify-content: center; margin: 6px 0;">
+    <div style="color: #c4c3bb; font-size: 18px; line-height: 1;">↓</div>
+  </div>
+
+  <!-- Phase 3: Operations -->
+  <div style="display: flex; align-items: center; justify-content: space-between; gap: 14px; margin: 18px 0 14px;">
+    <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #b08968; letter-spacing: 0.04em;">PHASE 3 · OPERATIONS</span>
+    <span style="display: inline-flex; align-items: baseline; gap: 8px; background: #fff; border: 1px solid #e4e3dd; border-radius: 999px; padding: 5px 13px;">
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #b08968;">PERSONA</span>
+      <span style="font-size: 12px; font-weight: 600;">SRE</span>
+      <span style="font-size: 11px; color: #8a8a82;">deploy · observe · run</span>
+    </span>
+  </div>
+  <div style="display: flex; align-items: stretch; gap: 0; margin-bottom: 8px;">
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">08</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Deployment / Dark Launches</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Ship to production with repeatable pipelines and feature toggles</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">09</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Runbook</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Operational procedures for incidents and recovery</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">10</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Observability</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Metrics, logs, and traces for live behavior</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">11</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Backups</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Backups, retention, and restore drills</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #4f9b6e;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L1 · Assisted</span></div>
+    </div>
+
+    <div style="flex: 0 0 26px; display: flex; align-items: center; justify-content: center; color: #c4c3bb; font-size: 18px;">→</div>
+
+    <div style="flex: 1; background: #fff; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 14px; box-shadow: 0 1px 2px rgba(0,0,0,0.03); display: flex; flex-direction: column;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; margin-bottom: 7px;">12</div>
+      <div style="font-size: 14px; font-weight: 600; margin-bottom: 6px;">Post-mortems &amp; Insights</div>
+      <div style="font-size: 12px; color: #6b6b63; line-height: 1.45; flex: 1;">Incident reviews and usage insights that shape the next cycle</div>
+      <div style="display: flex; align-items: center; gap: 6px; margin-top: 12px;"><span style="width: 8px; height: 8px; border-radius: 50%; background: #c79a5b;"></span><span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L2 · Augmented</span></div>
+    </div>
+
+  </div>
+
+  <!-- Feedback loop back to Inception -->
+  <div style="margin-top: 14px; display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px dashed #b08968; border-radius: 10px; background: rgba(176,137,104,0.05);">
+    <span style="font-size: 18px; color: #b08968; line-height: 1;">↺</span>
+    <span style="font-size: 13px; color: #6b6b63; line-height: 1.45;"><span style="font-weight: 600; color: #1c1c1a;">Feedback loop</span> — post-mortems &amp; insights feed back into <span style="font-weight: 600; color: #1c1c1a;">Phase 1 · Inception</span>, shaping the next cycle's requirements &amp; units of work.</span>
+  </div>
+
+  <!-- Audit logging — cross-cutting -->
+  <div style="margin-top: 36px; background: #f3f2ee; border: 1px solid #e4e3dd; border-radius: 10px; padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; gap: 14px;">
+    <div style="display: flex; align-items: center; gap: 14px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; flex: 0 0 auto;">∞</div>
+      <div>
+        <span style="font-size: 14px; font-weight: 600;">Audit Logging</span>
+        <span style="font-size: 13px; color: #6b6b63;"> &nbsp;— spans every step; decisions &amp; delivery steps recorded in <span style="font-family: 'JetBrains Mono', monospace; font-size: 12px;">aidlc-docs/</span></span>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 7px; flex: 0 0 auto;">
+      <span style="width: 9px; height: 9px; border-radius: 50%; background: #6b6cb1;"></span>
+      <span style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6b6b63;">L3 · Agentic</span>
+    </div>
+  </div>
+
+  </div><!-- /left column -->
+
+  <!-- aidlc-docs tree -->
+  <div style="flex: 0 0 372px;">
+    <div style="background: #1c1c1a; color: #fbfbfa; border-radius: 12px; padding: 22px 22px 26px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 14px; color: #d9b48f; margin-bottom: 4px;">aidlc-docs/</div>
+      <div style="font-size: 12px; color: #9a9a92; line-height: 1.45; margin-bottom: 18px;">The AI-DLC trail, checked in beside the code. Tags map each artifact to its lifecycle step.</div>
+
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 12.5px;">
+
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 0;"><span style="color: #e8e7e1;">aidlc-state.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">∞</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 4px 0;"><span style="color: #e8e7e1;">audit.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">∞</span></div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0 4px;"><span style="color: #d9b48f;">reverse-engineering/</span><span style="font-size: 10px; color: #c98a7d; border: 1px dashed rgba(201,138,125,0.45); border-radius: 5px; padding: 1px 7px;">greenfield</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 16px;"><span style="color: #e8e7e1;">system-map.md</span><span style="font-size: 10px; color: #c98a7d; background: rgba(201,138,125,0.12); border-radius: 5px; padding: 2px 7px;">n/a</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 16px;"><span style="color: #e8e7e1;">current-state.md</span><span style="font-size: 10px; color: #c98a7d; background: rgba(201,138,125,0.12); border-radius: 5px; padding: 2px 7px;">n/a</span></div>
+
+        <div style="color: #d9b48f; padding: 8px 0 4px;">inception/</div>
+        <div style="color: #8d8e9e; padding: 4px 0 2px 16px;">requirements/</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 32px;"><span style="color: #e8e7e1;">requirements.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">02</span></div>
+        <div style="color: #8d8e9e; padding: 4px 0 2px 16px;">plans/</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 32px;"><span style="color: #e8e7e1;">workflow-plan.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">03</span></div>
+        <div style="color: #8d8e9e; padding: 4px 0 2px 16px;">application-design/</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 32px;"><span style="color: #e8e7e1;">application-design.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">04</span></div>
+        <div style="color: #8d8e9e; padding: 4px 0 2px 16px;">units/</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 32px;"><span style="color: #e8e7e1;">units-of-work.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">05</span></div>
+
+        <div style="color: #d9b48f; padding: 8px 0 4px;">construction/</div>
+        <div style="color: #8d8e9e; padding: 4px 0 2px 16px;">build-and-test/</div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 32px;"><span style="color: #e8e7e1;">build-and-test-summary.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">07</span></div>
+
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 8px 0 4px;"><span style="color: #d9b48f;">operations/</span><span style="font-size: 10px; color: #c98a7d; border: 1px dashed rgba(201,138,125,0.45); border-radius: 5px; padding: 1px 7px;">planned</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 16px;"><span style="color: #e8e7e1;">deployment.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">08</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 16px;"><span style="color: #e8e7e1;">runbook.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">09</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 16px;"><span style="color: #e8e7e1;">observability.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">10</span></div>
+        <div style="display: flex; align-items: center; justify-content: space-between; padding: 3px 0 3px 16px;"><span style="color: #e8e7e1;">backups.md</span><span style="font-size: 10px; color: #d9b48f; background: rgba(217,180,143,0.14); border-radius: 5px; padding: 2px 7px;">11</span></div>
+
+      </div>
+
+      <div style="margin-top: 22px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.12);">
+        <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #d9b48f; letter-spacing: 0.04em; margin-bottom: 12px;">MAPS TO LIFECYCLE</div>
+
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 12px;">
+          <span style="color: #cfcfc7;">Entry · Reverse Engineering</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: #c98a7d; flex: 0 0 auto;">reverse-engineering/</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 12px;">
+          <span style="color: #cfcfc7;">Phase 1 · Inception</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: #e8e7e1; flex: 0 0 auto;">inception/</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 12px;">
+          <span style="color: #cfcfc7;">Phase 2 · Construction</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: #e8e7e1; flex: 0 0 auto;">construction/</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 12px;">
+          <span style="color: #cfcfc7;">Phase 3 · Operations</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: #c98a7d; flex: 0 0 auto;">operations/</span>
+        </div>
+        <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px; padding: 5px 0; font-size: 12px;">
+          <span style="color: #cfcfc7;">Business participation</span>
+          <span style="font-family: 'JetBrains Mono', monospace; color: #e8e7e1; flex: 0 0 auto; text-align: right;">requirements.md<br>workflow-plan.md · audit.md</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  </div><!-- /two-column flex -->
+
+</div>
+</x-dc>
+</body>
+</html>
