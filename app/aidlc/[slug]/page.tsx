@@ -25,6 +25,33 @@ export default async function ArtifactDetailPage({ params }: Params) {
   const { slug } = await params;
   const artifact = getArtifact(slug);
   if (!artifact) notFound();
+  const isHtmlArtifact = artifact.contentType === "html";
+  const isImageArtifact = artifact.contentType === "image";
+  const isCodeArtifact = artifact.contentType === "code";
+
+  if (isHtmlArtifact) {
+    return (
+      <iframe
+        title={artifact.title}
+        srcDoc={artifact.content}
+        sandbox="allow-scripts"
+        className="fixed inset-0 z-50 h-screen w-screen border-0 bg-white"
+      />
+    );
+  }
+
+  if (isImageArtifact) {
+    return (
+      <div className="fixed inset-0 z-50 grid h-screen w-screen place-items-center bg-slate-950 p-4">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={artifact.content}
+          alt={artifact.title}
+          className="max-h-full max-w-full object-contain"
+        />
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
@@ -73,7 +100,13 @@ export default async function ArtifactDetailPage({ params }: Params) {
         </aside>
 
         <article className="card overflow-hidden p-5">
-          <MarkdownDocument markdown={artifact.markdown} />
+          {isCodeArtifact ? (
+            <pre className="overflow-auto rounded-lg bg-slate-950 p-4 text-xs leading-5 text-slate-100">
+              <code>{artifact.content}</code>
+            </pre>
+          ) : (
+            <MarkdownDocument markdown={artifact.content} />
+          )}
         </article>
       </div>
     </div>

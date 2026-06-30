@@ -31,3 +31,11 @@
 **Context**: Construction / Code Generation + Build and Test
 
 ---
+
+## Reverse Engineering Loop Automation
+**Timestamp**: 2026-07-01T00:00:00Z
+**User Input**: "go over every single feature in this app create a user story with expected behaviour based on the code keep a single canonical spreadsheet tracking the features status ... switch loop to testing every user story ... fix every logistical error or ux error ... test every user behaviour again post fix"
+**AI Response**: Added the reverse-engineering feature traceability loop as an AI-DLC artifact, binding existing-code discovery to `feature-status-tracker.csv`, story testing, fix pass, and retest pass.
+**Context**: Entry / Reverse Engineering + Traceability Matrix
+
+---

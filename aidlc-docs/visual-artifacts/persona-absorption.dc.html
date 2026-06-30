@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  body { margin: 0; }
+</style>
+</helmet>
+<div style="width: 900px; height: 680px; background: #fbfbfa; color: #1c1c1a; font-family: 'Inter', -apple-system, sans-serif; padding: 40px 44px; box-sizing: border-box; display: flex; flex-direction: column;">
+
+  <div style="display: flex; align-items: baseline; gap: 13px; margin-bottom: 4px;">
+    <h1 style="font-size: 26px; font-weight: 700; letter-spacing: -0.02em; margin: 0;">One Squad → AI Levels</h1>
+    <span style="font-size: 12px; font-family: 'JetBrains Mono', monospace; color: #8a8a82;">tetris absorption</span>
+  </div>
+  <p style="font-size: 13px; color: #6b6b63; margin: 0 0 22px; max-width: 760px; line-height: 1.5;">A single stream-aligned squad's work falls in as task blocks, owned by its roles. The AI absorbs the work from the bottom up — and over the quarter more of the squad runs at higher autonomy, from L1 toward L3.</p>
+
+  <div style="flex: 1; display: flex; gap: 44px; align-items: flex-start; min-height: 0;">
+    <div style="flex: 0 0 auto;">
+      <div style="display: flex; align-items: baseline; justify-content: space-between; width: 268px; margin-bottom: 10px;">
+        <span style="font-size: 13px; font-weight: 600;">LoanFlow squad</span>
+        <span style="font-family: 'JetBrains Mono', monospace; font-size: 10px; color: #8a8a82;">stream-aligned · 7 roles</span>
+      </div>
+      {{ well }}
+    </div>
+    <div style="flex: 1; min-width: 0; padding-top: 6px;">
+      <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #b08968; letter-spacing: 0.04em; margin-bottom: 18px;">SQUAD WORK RUN AT EACH AI LEVEL</div>
+      {{ meters }}
+    </div>
+  </div>
+
+  <div style="display: flex; align-items: center; gap: 16px; margin-top: 18px; padding-top: 16px; border-top: 1px solid #ececE6;">
+    <button onClick="{{ toggle }}" style="font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 600; color: #1c1c1a; background: #fff; border: 1px solid #d8d7d0; border-radius: 8px; padding: 8px 18px; cursor: pointer;" style-hover="background: #f3f2ee;">{{ playLabel }}</button>
+    <span style="font-size: 12px; color: #8a8a82; line-height: 1.4;">Bars show the share of the squad's work running at each AI level. The mix shifts toward higher autonomy over the loop.</span>
+  </div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;: {&quot;width&quot;: 900, &quot;height&quot;: 680}, &quot;speed&quot;: {&quot;editor&quot;: &quot;range&quot;, &quot;default&quot;: 1, &quot;min&quot;: 0.5, &quot;max&quot;: 2, &quot;step&quot;: 0.1, &quot;unit&quot;: &quot;x&quot;, &quot;tsType&quot;: &quot;number&quot;, &quot;section&quot;: &quot;Animation&quot;}, &quot;drift&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Animation&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { paused: false };
+    this.COLS = 7; this.ROWS = 13; this.CELL = 32;
+    this.personas = [
+      { ab: 'ENG', lvl: 0 }, { ab: 'SRE', lvl: 0 }, { ab: 'QA', lvl: 0 },
+      { ab: 'PO', lvl: 1 }, { ab: 'DES', lvl: 1 },
+      { ab: 'AI', lvl: 2 }, { ab: 'TL', lvl: 2 },
+    ];
+    this.levels = [
+      { key: 'L1', name: 'AI-Assisted', color: '#4f9b6e', who: 'Engineer · SRE · QA' },
+      { key: 'L2', name: 'AI-Augmented', color: '#c79a5b', who: 'Product Owner · Designer' },
+      { key: 'L3', name: 'Agentic', color: '#6b6cb1', who: 'AI Engineer · Tech Lead' },
+    ];
+    this.shapes = [
+      [[0,0],[0,1],[1,0],[1,1]],
+      [[0,0],[0,1],[0,2],[0,3]],
+      [[0,0],[1,0],[2,0],[2,1]],
+      [[0,0],[0,1],[0,2],[1,1]],
+      [[0,1],[0,2],[1,0],[1,1]],
+      [[0,0],[1,0],[2,0]],
+      [[0,0]],
+    ];
+    this.grid = Array.from({ length: this.ROWS }, () => Array(this.COLS).fill(null));
+    this.counts = [0, 0, 0];
+    this.piece = null; this.flash = null;
+    this.fallAcc = 0; this.absorbAcc = 0; this.spawnAcc = 0;
+  }
+
+  componentDidMount() {
+    this.t0 = performance.now(); this.last = this.t0;
+    this.loop = this.loop.bind(this);
+    this.raf = requestAnimationFrame(this.loop);
+  }
+  componentWillUnmount() { cancelAnimationFrame(this.raf); }
+
+  sp() { return this.props.speed ?? 1; }
+
+  randLevel() {
+    const drift = this.props.drift ?? true;
+    let w1, w2;
+    if (drift) {
+      const t = ((performance.now() - this.t0) / 22000) % 1;
+      w1 = 0.7 - 0.55 * t; w2 = 0.2;
+    } else { w1 = 0.45; w2 = 0.27; }
+    const r = Math.random();
+    if (r < w1) return 0; if (r < w1 + w2) return 1; return 2;
+  }
+  spawn() {
+    const lvl = this.randLevel();
+    const pool = this.personas.filter(p => p.lvl === lvl);
+    const per = pool[Math.floor(Math.random() * pool.length)];
+    const off = this.shapes[Math.floor(Math.random() * this.shapes.length)];
+    const w = Math.max(...off.map(o => o[1])) + 1;
+    const c0 = Math.floor(Math.random() * (this.COLS - w + 1));
+    const top = Math.max(...off.map(o => o[0]));
+    this.piece = { off, r: -top - 1, c: c0, lvl, per };
+  }
+  cells(p) { return p.off.map(o => ({ r: p.r + o[0], c: p.c + o[1] })); }
+  fits(p) {
+    return this.cells(p).every(({ r, c }) => c >= 0 && c < this.COLS && r < this.ROWS && (r < 0 || !this.grid[r][c]));
+  }
+  lock() {
+    this.cells(this.piece).forEach(({ r, c }) => {
+      if (r >= 0 && r < this.ROWS && c >= 0 && c < this.COLS) this.grid[r][c] = { lvl: this.piece.lvl, ab: this.piece.per.ab };
+    });
+    this.piece = null;
+  }
+  startAbsorb() {
+    for (let r = this.ROWS - 1; r >= 0; r--) {
+      if (this.grid[r].some(x => x)) { this.flash = { row: r, until: performance.now() + 160 }; return; }
+    }
+  }
+  commitAbsorb() {
+    const r = this.flash.row;
+    this.grid[r].forEach(cell => { if (cell) this.counts[cell.lvl]++; });
+    for (let rr = r; rr > 0; rr--) this.grid[rr] = this.grid[rr - 1];
+    this.grid[0] = Array(this.COLS).fill(null);
+    this.flash = null;
+  }
+
+  loop(now) {
+    const dt = Math.min(now - this.last, 60); this.last = now;
+    if (!this.state.paused) {
+      const sp = this.sp();
+      const fallInt = 110 / sp, absorbInt = 760 / sp, spawnGap = 200 / sp;
+      if (this.flash) {
+        if (now >= this.flash.until) this.commitAbsorb();
+      } else {
+        const tall = this.grid[1].some(x => x) || this.grid[2].some(x => x);
+        this.spawnAcc += dt; this.fallAcc += dt; this.absorbAcc += dt;
+        if (!this.piece && this.spawnAcc >= spawnGap) { this.spawnAcc = 0; this.spawn(); }
+        if (this.piece && this.fallAcc >= fallInt) {
+          this.fallAcc = 0;
+          const moved = { ...this.piece, r: this.piece.r + 1 };
+          if (this.fits(moved)) this.piece = moved; else this.lock();
+        }
+        if (tall || this.absorbAcc >= absorbInt) { this.absorbAcc = 0; this.startAbsorb(); }
+      }
+      this.forceUpdate();
+    }
+    this.raf = requestAnimationFrame(this.loop);
+  }
+
+  renderWell() {
+    const h = React.createElement;
+    const { COLS, ROWS, CELL } = this;
+    const comp = this.grid.map(row => row.slice());
+    if (this.piece) this.cells(this.piece).forEach(({ r, c }) => {
+      if (r >= 0 && r < ROWS && c >= 0 && c < COLS) comp[r][c] = { lvl: this.piece.lvl, ab: this.piece.per.ab, falling: true };
+    });
+    const flashRow = this.flash ? this.flash.row : -1;
+    const els = [];
+    for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+      const cell = comp[r][c];
+      if (!cell) {
+        els.push(h('div', { key: r + '-' + c, style: { width: CELL, height: CELL, borderRadius: 5, background: 'rgba(255,255,255,0.05)' } }));
+        continue;
+      }
+      const color = this.levels[cell.lvl].color;
+      const absorbing = (r === flashRow);
+      const style = absorbing
+        ? { width: CELL, height: CELL, borderRadius: 5, background: color, color: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, fontWeight: 600, boxShadow: '0 0 16px ' + color, boxSizing: 'border-box' }
+        : { width: CELL, height: CELL, borderRadius: 5, background: '#fbfbfa', border: '2px solid ' + color, color: color, display: 'flex', alignItems: 'center', justifyContent: 'center', fontFamily: "'JetBrains Mono', monospace", fontSize: 10, fontWeight: 600, boxSizing: 'border-box', opacity: cell.falling ? 0.92 : 1 };
+      els.push(h('div', { key: r + '-' + c, style }, cell.ab));
+    }
+    return h('div', { style: { display: 'grid', gridTemplateColumns: 'repeat(' + COLS + ', ' + CELL + 'px)', gap: 4, padding: 10, background: '#16161c', borderRadius: 12 } }, els);
+  }
+
+  renderMeters() {
+    const h = React.createElement;
+    const total = this.counts.reduce((a, b) => a + b, 0) || 1;
+    const rows = this.levels.map((lv, i) => {
+      const share = this.counts[i] / total;
+      return h('div', { key: lv.key, style: { marginBottom: 20 } }, [
+        h('div', { key: 't', style: { display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 8 } }, [
+          h('div', { key: 'l', style: { display: 'flex', alignItems: 'center', gap: 9 } }, [
+            h('span', { key: 'd', style: { width: 11, height: 11, borderRadius: '50%', background: lv.color, display: 'inline-block' } }),
+            h('span', { key: 'n', style: { fontSize: 14, fontWeight: 600 } }, lv.key + ' · ' + lv.name),
+          ]),
+          h('span', { key: 'c', style: { fontFamily: "'JetBrains Mono', monospace", fontSize: 14, color: '#1c1c1a' } }, this.counts[i]),
+        ]),
+        h('div', { key: 'bar', style: { height: 13, background: '#ecebE4', borderRadius: 7, overflow: 'hidden' } },
+          h('div', { style: { height: '100%', width: (share * 100).toFixed(1) + '%', background: lv.color, borderRadius: 7, transition: 'width 0.45s ease' } })),
+        h('div', { key: 'p', style: { fontSize: 11.5, color: '#8a8a82', marginTop: 7 } }, lv.who),
+      ]);
+    });
+    return h('div', { style: { width: '100%' } }, rows);
+  }
+
+  renderVals() {
+    return {
+      well: this.renderWell(),
+      meters: this.renderMeters(),
+      playLabel: this.state.paused ? 'Play' : 'Pause',
+      toggle: () => this.setState(s => ({ paused: !s.paused })),
+    };
+  }
+}
+</script>
+</body>
+</html>

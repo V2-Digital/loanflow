@@ -22,12 +22,13 @@ export default function AidlcArtifactsPage() {
             </h1>
           </div>
           <p className="max-w-3xl text-sm leading-6 text-slate-600">
-            A compact view of the planning, design, implementation, and validation
-            artifacts that shaped this reference business-loan coordination app.
+            A compact view of the reverse-engineering, planning, design,
+            implementation, and validation artifacts that shaped this reference
+            business-loan coordination app.
           </p>
           <div className="flex flex-wrap gap-2">
             {PHASES.map((phase) => (
-              <a key={phase} href={`#${phase.toLowerCase()}`} className="btn-ghost">
+              <a key={phase} href={`#${phaseId(phase)}`} className="btn-ghost">
                 {phase}
               </a>
             ))}
@@ -55,7 +56,7 @@ export default function AidlcArtifactsPage() {
       {PHASES.map((phase) => {
         const phaseArtifacts = artifacts.filter((artifact) => artifact.phase === phase);
         return (
-          <section key={phase} id={phase.toLowerCase()} className="space-y-3 scroll-mt-24">
+          <section key={phase} id={phaseId(phase)} className="space-y-3 scroll-mt-24">
             <div className="flex items-end justify-between gap-4">
               <div>
                 <h2 className="text-lg font-semibold text-slate-950">{phase}</h2>
@@ -127,6 +128,10 @@ export default function AidlcArtifactsPage() {
       })}
     </div>
   );
+}
+
+function phaseId(phase: string) {
+  return phase.toLowerCase().replace(/\s+/g, "-");
 }
 
 function Metric({ label, value }: { label: string; value: number }) {

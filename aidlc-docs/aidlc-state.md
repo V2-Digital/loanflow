@@ -16,7 +16,7 @@ bank team and the borrower. Persistence via SQLite; mock role-based auth.
 | Phase | Stage | Status | Notes |
 |-------|-------|--------|-------|
 | Inception | Workspace Detection | ✅ Done | Greenfield, empty workspace |
-| Inception | Reverse Engineering | ⏭️ Skipped | Greenfield |
+| Entry | Reverse Engineering | ✅ Added | Greenfield delivery plus reusable existing-code feature traceability loop |
 | Inception | Requirements Analysis | ✅ Done | Standard depth (see requirements/) |
 | Inception | User Stories | ✅ Done (folded into requirements) | Personas + stories captured |
 | Inception | Workflow Planning | ✅ Done | plans/workflow-plan.md |
@@ -41,3 +41,7 @@ bank team and the borrower. Persistence via SQLite; mock role-based auth.
 - Personas: loan officer, underwriter, credit analyst, manager, borrower.
 - SQLite (better-sqlite3) + cookie-based mock session with role switcher.
 - Reference/educational use only — not production-secure.
+- Reverse engineering loop is now part of AI-DLC: discover every feature from code,
+  create code-backed user stories, maintain `feature-status-tracker.csv` as the
+  canonical traceability matrix, test every story, fix logistical/UX errors, and
+  retest affected behaviors.
