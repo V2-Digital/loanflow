@@ -550,6 +550,17 @@ async function main() {
       traceabilityLoop.body.includes("test every user behaviour again post fix"),
     `GET /aidlc/feature-traceability-loop status ${traceabilityLoop.res.status}`,
   );
+  const awsV2Comparison = await text(officer, "/aidlc/aws-v2-comparison");
+  record(
+    "LF-054",
+    "AWS v2 AI-DLC comparison artifact",
+    awsV2Comparison.res.status === 200 &&
+      awsV2Comparison.body.includes("AWS AI-DLC Workflows v2 vs LoanFlow AI-DLC") &&
+      awsV2Comparison.body.includes("Side-by-Side Comparison") &&
+      awsV2Comparison.body.includes("32 stages") &&
+      awsV2Comparison.body.includes("feature-status-tracker.csv"),
+    `GET /aidlc/aws-v2-comparison status ${awsV2Comparison.res.status}`,
+  );
   const readme = await text(officer, "/readme");
   record(
     "LF-042",

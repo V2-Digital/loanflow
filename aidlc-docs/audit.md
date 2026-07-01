@@ -39,3 +39,11 @@
 **Context**: Entry / Reverse Engineering + Traceability Matrix
 
 ---
+
+## AWS v2 Comparison Artifact
+**Timestamp**: 2026-07-01T00:00:00Z
+**User Input**: "create a new new slug that discussed the differnces between https://github.com/awslabs/aidlc-workflows/tree/v2 and the version we used in this repo , create a side by side table"
+**AI Response**: Added `/aidlc/aws-v2-comparison`, a Markdown artifact comparing AWS Labs AI-DLC Workflows v2 with the LoanFlow-specific AI-DLC implementation, including phases, stages, agents, state, audit, sensors, operations, repo structure, and traceability.
+**Context**: Entry / Reverse Engineering + Reference Comparison
+
+---

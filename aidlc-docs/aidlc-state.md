@@ -45,3 +45,6 @@ bank team and the borrower. Persistence via SQLite; mock role-based auth.
   create code-backed user stories, maintain `feature-status-tracker.csv` as the
   canonical traceability matrix, test every story, fix logistical/UX errors, and
   retest affected behaviors.
+- Added an AWS v2 comparison artifact that documents the difference between the
+  upstream AI-DLC Workflows v2 framework and LoanFlow's app-bound AI-DLC evidence
+  trail.

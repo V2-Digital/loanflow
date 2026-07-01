@@ -118,6 +118,13 @@ export const ARTIFACTS = [
       "Agentic loop for code-derived user stories, the canonical feature tracker, story testing, fixes, and retesting.",
   },
   {
+    slug: "aws-v2-comparison",
+    phase: "Reverse Engineering",
+    file: "reverse-engineering/aws-v2-comparison.md",
+    summary:
+      "Side-by-side comparison of AWS Labs AI-DLC Workflows v2 and the LoanFlow AI-DLC adaptation.",
+  },
+  {
     slug: "requirements",
     phase: "Inception",
     file: "inception/requirements/requirements.md",
